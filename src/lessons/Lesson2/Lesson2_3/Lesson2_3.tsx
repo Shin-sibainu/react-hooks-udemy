@@ -1,26 +1,20 @@
 import React, { useState, useEffect } from "react";
 import useFetchUser from "./useFetchUser";
+import useSWR from "swr";
+import { cache } from "swr/_internal";
 
-// ユーザー情報の型を定義
-interface User {
-  id: number;
-  name: string;
-  username: string;
-  email: string;
-  address: {
-    street: string;
-    suite: string;
-    city: string;
-    zipcode: string;
-    geo: {
-      lat: string;
-      lng: string;
-    };
-  };
-}
+const fetcher = (args: string) => fetch(args).then((res) => res.json());
+console.log(cache);
 
 const Lesson2_3: React.FC = () => {
-  const { user, loading, error } = useFetchUser(1); // カスタムフックを使用してユーザー情報を取得
+  // const { user, loading, error } = useFetchUser(1); // カスタムフックを使用してユーザー情報を取得
+
+  const {
+    data: user,
+    error,
+    isLoading: loading,
+  } = useSWR("https://jsonplaceholder.typicode.com/users/5", fetcher);
+
   // const [user, setUser] = useState<User | null>(null);
   // const [loading, setLoading] = useState<boolean>(true);
 
