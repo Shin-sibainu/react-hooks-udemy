@@ -1,8 +1,10 @@
 import "./App.css";
+// import Lesson3_1 from "./lessons/Lesson3/Lesson3_1";
+import Lesson3_2 from "./lessons/Lesson3/Lesson3_2";
 // import Lesson1_1 from "./lessons/Lesson1/Lesson1_1";
 // import Lesson2_1 from "./lessons/Lesson2/Lesson2_1/Lesson2_1";
 // import Lesson2_2 from "./lessons/Lesson2/Lesson2_2/Lesson2_2";
-import Lesson2_3 from "./lessons/Lesson2/Lesson2_3/Lesson2_3";
+// import Lesson2_3 from "./lessons/Lesson2/Lesson2_3/Lesson2_3";
 
 function App() {
   return (
@@ -11,9 +13,9 @@ function App() {
       {/* <Lesson1_2 /> */}
       {/* <Lesson2_1 /> */}
       {/* <Lesson2_2 /> */}
-      <Lesson2_3 />
+      {/* <Lesson2_3 /> */}
       {/* <Lesson3_1 /> */}
-      {/* <Lesson3_2 /> */}
+      <Lesson3_2 />
     </div>
   );
 }
