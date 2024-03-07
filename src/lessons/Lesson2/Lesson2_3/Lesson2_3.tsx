@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import useFetchUser from "../Lesson2_2/useFetchUser";
+import useFetchUser from "./useFetchUser";
 
 // ユーザー情報の型を定義
 interface User {
