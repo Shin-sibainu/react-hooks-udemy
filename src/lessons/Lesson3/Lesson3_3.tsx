@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useRef } from "react";
 
 const Lesson3_3 = () => {
   //   const [text, setText] = useState("");
