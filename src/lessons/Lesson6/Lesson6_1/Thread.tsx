@@ -1,5 +1,6 @@
-import { useRef, useOptimistic } from "react";
+import { useRef } from "react";
 import { Message } from "./Lesson6_1";
+import { useOptimistic } from "react";
 
 const Thread = ({
   messages,
@@ -10,29 +11,41 @@ const Thread = ({
 }) => {
   const formRef = useRef<HTMLFormElement>(null);
 
-  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
+  // event: React.FormEvent<HTMLFormElement>
+  const handleSubmit = async () => {
+    // event.preventDefault();
+    // const formData = new FormData(formRef.current!);
+    // await sendMessage(formData);
+    // formRef.current?.reset();
+
     const formData = new FormData(formRef.current!);
-    await sendMessage(formData);
+    addOptimisticMessage(formData);
     formRef.current?.reset();
+    await sendMessage(formData);
   };
 
-  const [optimisticMessages, addOptimisticMesage] = useOptimistic<
-    Message | Message[]
-  >(messages, (state, newMessage) => [
-    ...state,
-    {
-      text: newMessage,
-      sending: true,
-    },
-  ]);
+  const [optimisticMessages, addOptimisticMessage] = useOptimistic(
+    messages,
+    (state: Message[], newMessage: Message) => [
+      ...state,
+      {
+        text: newMessage,
+        sending: true,
+      },
+    ]
+  );
 
   return (
     <div>
-      {messages.map((message, index: number) => (
+      {/* {messages.map((message, index: number) => (
         <div key={index}>{message.text}</div>
+      ))} */}
+      {optimisticMessages.map((message: Message, index: number) => (
+        <div key={index}>
+          {message.text} {!!message.sending && <small>(Sending...)</small>}
+        </div>
       ))}
-      <form onSubmit={handleSubmit} ref={formRef}>
+      <form action={handleSubmit} ref={formRef}>
         <input
           type="text"
           name="message"
