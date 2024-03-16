@@ -12,14 +12,13 @@ const Thread = ({
   const formRef = useRef<HTMLFormElement>(null);
 
   // event: React.FormEvent<HTMLFormElement>
-  const handleSubmit = async () => {
+  const handleSubmit = async (formData: FormData) => {
     // event.preventDefault();
     // const formData = new FormData(formRef.current!);
     // await sendMessage(formData);
     // formRef.current?.reset();
 
-    const formData = new FormData(formRef.current!);
-    addOptimisticMessage(formData);
+    addOptimisticMessage(formData.get("message"));
     formRef.current?.reset();
     await sendMessage(formData);
   };
