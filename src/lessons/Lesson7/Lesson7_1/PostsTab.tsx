@@ -8,7 +8,9 @@ const PostsTab = () => {
 
 function SlowPost({ index }: { index: number }) {
   const startTime = performance.now();
-  while (performance.now() - startTime < 6) {}
+  while (performance.now() - startTime < 6) {
+    // Do nothing for 6 ms per item to emulate extremely slow code
+  }
 
   return <li className="item">Post #{index + 1}</li>;
 }

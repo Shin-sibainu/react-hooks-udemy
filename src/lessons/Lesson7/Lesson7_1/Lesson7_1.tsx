@@ -1,4 +1,4 @@
-import { Suspense, useState, useTransition } from "react";
+import { Suspense, useState } from "react";
 import TabButton from "./TabButton";
 import AboutTab from "./AboutTab";
 import PostsTab from "./PostsTab";
